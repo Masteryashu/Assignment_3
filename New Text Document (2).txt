@@ -1,0 +1,78 @@
+Write the queries for the following tasks - 
+//1.Create a database name - “Order Details”.
+CREATE DATABASE Order_Details;
+
+//2.Create a table name - “consumer”.
+CREATE TABLE consumer (
+  cns_id INTEGER PRIMARY KEY,
+  cns_name TEXT NOT NULL,
+  Manager_id TEXT NOT NULL,
+  trans_dt TEXT NOT NULL
+);
+
+//Insert 5 details in the “consumer” table  - cns_id,cns_name,Manager_id,trans_dt
+INSERT INTO consumer VALUES (68319, 'Mr.Singh','63819', '1991-1-12');
+INSERT INTO consumer VALUES (68311, 'Mr.Vijay','63811', '1991-5-12');
+INSERT INTO consumer VALUES (68312, 'Mr.Manoj','63812', '1999-1-14');
+INSERT INTO consumer VALUES (68313, 'Mr.Sai','63813', '1998-6-4');
+INSERT INTO consumer VALUES (68314, 'Mr.Ramu','63814', '1997-7-8');
+
+//3.Create a table name - “Orders”.
+CREATE TABLE orders (
+  ord_no INTEGER PRIMARY KEY,
+  purchase_amt INTEGER NOT NULL,
+  ord_dt TEXT NOT NULL,
+  cns_id TEXT NOT NULL,
+  Manager_id TEXT NOT NULL,
+);
+
+//Insert 5 details in the “orders” table  - ord_no,purchase_amt,ord_dt,cns_id,Manager_id
+INSERT INTO orders VALUES (90334, 6883.69, '1977-8-15', '9998', '90909');
+INSERT INTO orders VALUES (90335, 9883.69, '1977-12-13', '9948', '99909');
+INSERT INTO orders VALUES (90336, 5883.69, '1977-6-5', '9928', '90509');
+INSERT INTO orders VALUES (90337, 8883.69, '1977-7-5', '9698', '40909');
+INSERT INTO orders VALUES (90338, 4683.69, '1977-8-25', '9398', '96909');
+
+//4.Create a table name - “Sales Manager”.
+CREATE TABLE sls_man (
+  Manager_id TEXT NOT NULL,
+  name TEXT NOT NULL,
+  city TEXT NOT NULL,
+);
+
+//Insert 5 details in the “sls_man” table  - Manager_id,name,city
+INSERT INTO sls_man VALUES (68319, 'Mr.Singh','63819', '1991-1-12', '6000','1001');
+INSERT INTO sls_man VALUES (68311, 'Mr.Vijay','63811', '1991-5-12', '6000','1011');
+INSERT INTO sls_man VALUES (68312, 'Mr.Manoj','63812', '1999-1-14', '6000','1012');
+INSERT INTO sls_man VALUES (68313, 'Mr.Sai','63813', '1998-6-4', '6000','1013');
+INSERT INTO sls_man VALUES (68314, 'Mr.Ramu','63814', '1997-7-8', '6000','1014');
+
+//Display the purchase amount from 100 to 500 from the orders table.
+
+SELECT purchase_amt FROM orders where purchase_amt between 100 and 500;
+
+
+//Change the consumer id in the orders table where order_no is equal to “1005”.
+
+UPDATE orders SET cns_id="2003" where ord_no="1005";
+
+
+//Return the consumer name, city, order number, order date, order amount, and sales manager name to find 
+those consumers with a grade less than 500 and should return in ascending order of consumer id.
+
+SELECT cns_name,city,ord_num,ord_dt,ord_amt,name from consumer,orders,sls_man ORDER BY cns_id
+
+
+//Return consumer name, city, order number, order date, and order amount in ascending order according to
+the order date to determine whether any of the existing consumers have placed an order or not
+
+SELECT cns_name,city ord_no,ord_dt,ord_amt ORDER BY ord_dt
+
+
+//Fetch the consumer name, city, order number, order date, order amount, and sales manager name to find
+out whether any existing consumer(s) have not placed any orders or if they have placed orders through their sales manager or by themselves. 
+
+SELECT cns_name,city,ord_num,ord_dt,ord_amt,name 
+ 
+
+
